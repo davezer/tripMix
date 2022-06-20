@@ -1,5 +1,5 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User, Trips } = require('../models');
+const { User, Trip } = require('../models');
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
@@ -15,13 +15,13 @@ const resolvers = {
             throw new AuthenticationError('Not logged in');
         },
 
-        trips: async (parent, { email }) => {
+        trip: async (parent, { email }) => {
             const params = email ? { email } : {};
-            return Collection.find(params).sort({ createdAt: -1 });
+            return Trip.find(params).sort({ createdAt: -1 });
         },
-        trip: async (parent, { _id }) => {
-            return Collection.findOne({ _id });
-        },
+        // trip: async (parent, { _id }) => {
+        //     return Trip.findOne({ _id });
+        // },
         user: async (parent, { email }) => {
             return User.findOne({ email })
                 .select('-__v -password')
@@ -66,24 +66,10 @@ const resolvers = {
             }
             throw new AuthenticationError('You need to be logged in!');
         },
-        addItem: async (parent, { collectionId, itemName, description }, context) => {
-            if (context.user) {
-                const item = await Item.create({ itemName, description });
-                console.log(item);
-                
-                await Collection.findByIdAndUpdate(
-                    { _id: collectionId },
-                    { $push: { items: item._id } },
-                    { new: true, runValidators: true }
-                );
-                
-                return item;
-            }
-            throw new AuthenticationError('You need to be logged in!');
-        },
+        
         
         // Mutation to remove a trip from a User
-        removeCollection: async (parent, {  tripId }, context) => {
+        removeTrip: async (parent, {  tripId }, context) => {
             // return trip.findOneAndDelete({ _id: tripId });
             if (context.user) {
                 const updatedUser = await User.findOneAndUpdate(

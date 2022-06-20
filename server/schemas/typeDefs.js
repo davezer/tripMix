@@ -10,7 +10,7 @@ const typeDefs = gql`
         _id: ID
         email: String
         tripCount: Int
-        trips: [Trips]
+        trips: [Trip]
     }
     type Trip {
         _id: ID
@@ -36,3 +36,5 @@ const typeDefs = gql`
       
     }
 `;
+
+module.exports = typeDefs;
