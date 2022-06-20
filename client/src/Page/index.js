@@ -1,5 +1,6 @@
 import Home from '../components/Home';
-import  PageContent from '../PageContent'
+import  PageContent from '../PageContent';
+import Map from '../components/Maps'
 
 
 

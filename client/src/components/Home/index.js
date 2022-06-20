@@ -1,6 +1,6 @@
 import React from 'react';
 
-
+import Map from '../Maps/index';
 
 const Home = () => {
 
@@ -9,11 +9,8 @@ const Home = () => {
   return(
 
     <>
-    
-    
-    
-   
-    </>  
+      {/* <Map /> */}
+    </> 
   )
 }
 

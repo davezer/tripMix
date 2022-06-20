@@ -50,20 +50,19 @@ function App() {
     <ApolloProvider client={client}>
       <Router>
         <>
-        <div>
-      <Header>
-        <Navigation
-          pages={pages}
-          setCurrentPage={setCurrentPage}
-          currentPage={currentPage}
-        ></Navigation>
-      </Header>
-      <main>
-        <Page currentPage={currentPage}></Page>
-      </main>
-      <Footer />
-    </div>
-          
+          <div>
+            <Header>
+              <Navigation
+                pages={pages}
+                setCurrentPage={setCurrentPage}
+                currentPage={currentPage}
+              ></Navigation>
+            </Header>
+            <main>
+              <Page currentPage={currentPage}></Page>
+            </main>
+            <Footer />
+          </div>
         </>
       </Router>
     </ApolloProvider>
