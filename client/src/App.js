@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
-import Page from './Page/';
+import Page from './Page';
 import './App.css';
-import Navigation from './components/Nav/';
-import Header from './components/Header/';
+import Navigation from './components/Nav';
+import Header from './components/Header';
 
 import './assets/libraries/bootstrap.css';
 
